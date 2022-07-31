@@ -14,6 +14,7 @@
  */
 
 let offersAmount = 0;
+let products = []
 
 function postOffers() {
     offersAmount = parseInt(prompt("Ingrese el numero de productos que desea publicar (Maximo 3)"));
@@ -34,8 +35,9 @@ class Product {
         this.description = description;
         this.price = price;
         this.picture = picture;
+        this.discounPrice = Math.trunc(price * 0.8);
     }
-    createCard(discounPrice) {
+    createCard() {
         let url= "./img/default.jpg"
         if(this.picture!==""){
             url = this.picture;
@@ -47,7 +49,7 @@ class Product {
                                 <h4 class="description">${this.description}</h4>
                                 <h4 class="regularPrice" >$ ${this.price}</h4>
                                 <h4 class="discount">20%OFF</h4>
-                                <h3 class="price" >$ ${discounPrice}</h3>
+                                <h3 class="price" >$ ${this.discounPrice}</h3>
                             </div>
                         </div>`
         )
@@ -62,8 +64,14 @@ function fillCard() {
         const precio = parseInt(prompt(`Ingrese precio SIN DESCUENTO del producto ${i}`));
         const picture = prompt("Ingrese url de la imagen\nSi no tiene una imagen para agregar, simplemente continue con ACEPTAR");
         let item = new Product(titulo, descripcion, precio, picture);
+        products.push(item);
+        /*
         let discountPrice = Math.trunc(precio*0.8);
-        item.createCard(discountPrice);
+        item.createCard(discountPrice);*/
+    }
+    for( const product of products){
+        console.log(product)
+        product.createCard();
     }
 }
 
