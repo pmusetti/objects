@@ -65,9 +65,6 @@ function fillCard() {
         const picture = prompt("Ingrese url de la imagen\nSi no tiene una imagen para agregar, simplemente continue con ACEPTAR");
         let item = new Product(titulo, descripcion, precio, picture);
         products.push(item);
-        /*
-        let discountPrice = Math.trunc(precio*0.8);
-        item.createCard(discountPrice);*/
     }
     for( const product of products){
         console.log(product)
